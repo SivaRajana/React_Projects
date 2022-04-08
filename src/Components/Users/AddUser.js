@@ -6,7 +6,6 @@ import Button from "../UI/Button";
 const AddUser = (props) => {
     const [userName, setUserName] = useState("");
     const [userAge, setUserAge] = useState("");
-    const [userDetails, setUserDetails] = useState({ name: "", age: "" });
 
     const addUserHandler = (event) => {
         event.preventDefault();
@@ -19,10 +18,7 @@ const AddUser = (props) => {
             return;
         }
         console.log(`${userName} >> ${userAge}`);
-        setUserDetails((prevData) => {
-            return { ...prevData, name: userName, age: userAge }
-        });
-        props.addUser(userDetails);
+        props.addUser({ name: userName, age: userAge });
         setUserAge('');
         setUserName("");
     }

@@ -8,7 +8,11 @@ const UserList = (props) => {
     return (
         <Card className={classes.users}>
             <ul>
-                {props.usersList.map((eachUser) => <User key={Math.random()} name={eachUser.name} age={eachUser.age} />)}
+                {
+                    props.usersList.length > 0 ?
+                        (props.usersList.map((eachUser) => <User key={Math.random()}
+                            name={eachUser.name} age={eachUser.age} />)) : "No Users Found"
+               }
             </ul>
         </Card>
     )
