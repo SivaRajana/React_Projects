@@ -1,6 +1,7 @@
 # React_Project 1
 
-- Each branch in this repository contains different React Project 
+# Each branch in this repository contains different React Project starting from basic to advanced
+- reachout to **rajana.iiitn@gmail.com** for any doubts or suggestion on this stuff.
 
 - Main Branch(Project_1) starts with a Very Basic Project, in which I mostly used functional components, stateManagement, props passing for parent & child communication and implemented child to parent communication, CSS modules, User validations and showed the appropriate error message via model.
 
