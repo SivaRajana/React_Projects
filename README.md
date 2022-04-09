@@ -4,6 +4,6 @@
 - reachout to **rajana.iiitn@gmail.com** for any doubts or suggestion on this stuff.
 
 # **Usage**
-	@@ -12,10 +12,3 @@ npm start
+npm start
 # Build for prod
 npm run build
