@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 import MainHeader from './components/MainHeader/MainHeader';
@@ -10,7 +9,7 @@ function App() {
   useEffect(() => {
     const loginInformation = localStorage.getItem("loginKey");
     if (loginInformation === '1') {
-      setIsLoggedIn(loginInformation)
+      setIsLoggedIn(true);
     }
   }, [])
 
