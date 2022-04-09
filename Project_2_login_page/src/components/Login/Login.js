@@ -16,10 +16,10 @@ const updateEmail = (prevState, actionObject) => {
 
 const updatePassword = (prevState, actionObject) => {
   if (actionObject.actionType === 'ON_CHANGE') {
-    return { value: actionObject.value, isValid: actionObject.value.length > 6 };
+    return { value: actionObject.value, isValid: actionObject.value.trim().length > 6 };
   }
   if (actionObject.actionType === 'BLUR_EVENT') {
-    return { value: prevState.value, isValid: prevState.value.length > 6 };
+    return { value: prevState.value, isValid: prevState.value.trim().length > 6 };
   }
   return { value: '', isValid: false };
 }
@@ -59,12 +59,13 @@ const Login = (props) => {
   };
 
   const validatePasswordHandler = () => {
-    dispatchEmail({ actionType: 'BLUR_EVENT' });
+    dispatchPassword({ actionType: 'BLUR_EVENT' });
     // setPasswordIsValid(enteredPassword.trim().length > 6);
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
+    console.log(emailState, passwordState);
     props.onLogin(emailState.value, passwordState.value);
   };
 
