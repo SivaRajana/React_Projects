@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import Card from '../UI/Card/Card';
 import Button from '../UI/Button/Button';
 import classes from './Login.module.css';
@@ -29,27 +29,44 @@ const Login = (props) => {
   // const [emailIsValid, setEmailIsValid] = useState();
   // const [enteredPassword, setEnteredPassword] = useState('');
   // const [passwordIsValid, setPasswordIsValid] = useState();
+
   const [formIsValid, setFormIsValid] = useState(false);
 
   const [emailState, dispatchEmail] = useReducer(updateEmail, { value: '', isValid: null });
   const [passwordState, dispatchPassword] = useReducer(updatePassword, { value: '', isValid: null });
 
+  let { isValid: emailValidity } = emailState;
+  let { isValid: passwordValidity } = passwordState;
+  // object desturcturing with aliasing....
+  useEffect(() => {
+
+    const intervalId = setTimeout(() => {
+      console.log("SIDE EFFECT")
+      setFormIsValid(emailValidity && passwordValidity);
+    }, 500);
+
+    return () => {
+      clearTimeout(intervalId);
+      console.log("CLEANING....");
+    }
+  }
+    , [emailValidity, passwordValidity]);
 
   const emailChangeHandler = (event) => {
     dispatchEmail({ actionType: "ON_CHANGE", value: event.target.value });
     // setEnteredEmail(event.target.value);
-    setFormIsValid(
-      emailState.isValid && passwordState.isValid
-    );
+    // setFormIsValid(
+    //   emailState.isValid && passwordState.isValid
+    // );
     // console.log(enteredEmail);
   };
 
   const passwordChangeHandler = (event) => {
     dispatchPassword({ actionType: "ON_CHANGE", value: event.target.value });
     // setEnteredPassword(event.target.value);
-    setFormIsValid(
-      emailState.isValid && passwordState.isValid
-    );
+    // setFormIsValid(
+    //   emailState.isValid && passwordState.isValid
+    // );
     // console.log(enteredPassword);
   };
 
